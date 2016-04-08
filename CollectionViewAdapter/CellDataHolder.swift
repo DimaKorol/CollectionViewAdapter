@@ -15,3 +15,14 @@ public class CellDataHolder {
         self.data = data
     }
 }
+
+
+extension SequenceType{
+    func toCellDataHolder(type : Int) -> [CellDataHolder] {
+        var data = [CellDataHolder]()
+        for item in self{
+            data.append(CellDataHolder(type: type, data: item as! AnyObject))
+        }
+        return data
+    }
+}

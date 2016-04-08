@@ -40,7 +40,7 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
 //        if let reusableView = ownDataSourceDelegate?.collectionView?(collectionView, viewForSupplementaryElementOfKind: kind, atIndexPath: indexPath){
 //            return reusableView
 //        }
-//        return collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "", forIndexPath: indexPath)
+//        return UICollectionReusableView()
 //    }
     
     @available(iOS 9.0, *)
