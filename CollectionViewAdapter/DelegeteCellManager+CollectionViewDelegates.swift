@@ -23,7 +23,9 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
         }
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellBinder.cellId, forIndexPath: indexPath)
-        cellBinder.bindData(cell, cellData: cellData.data)
+        (cell as? CellViewBinder)?.bindData(cell, cellData: cellData.data)
+//        cellBinder.bindData(cell, cellData: cellData.data)
+        
         
         return cell
     }
