@@ -1,6 +1,5 @@
 Pod::Spec.new do |s|
   s.name                      = "CollectionViewAdapter"
-  s.homepage                  = "http://EXAMPLE/CollectionViewAdapter"
   s.summary                   = 'A Swift based collection view binder for iOS 8 and up. Look like AdapterDelegates
                                 for RecyclerView on Android'
   s.homepage                  = 'https://github.com/DimaKorol/CollectionViewAdapter'
