@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.requires_arc              = true
   s.version 		 	= "0.1.0"
   s.homepage                  = 'https://github.com/DimaKorol/CollectionViewAdapter'
-  s.license                   = 'MIT'
+  s.license                   = { :type => "MIT", :file => "LICENSE" }
   s.author                    = { "DzmitryiKaraliou" => "toxicgen151@gmail.com" }
   s.source                    = { :git => 'https://github.com/DimaKorol/CollectionViewAdapter.git', :tag => s.version.to_s }
   s.source_files              = 'CollectionViewAdapter/**/*.{h,swift}'
