@@ -10,6 +10,5 @@ Pod::Spec.new do |s|
   s.author                    = { "DzmitryiKaraliou" => "toxicgen151@gmail.com" }
   s.source                    = { :git => 'https://github.com/DimaKorol/CollectionViewAdapter.git', :tag => s.version.to_s }
   s.source_files              = 'CollectionViewAdapter/**/*.{h,swift}'
-  s.resources                 = 'CollectionViewAdapter/*.xcassets'
-  s.framework = "UIKit"
+  s.framework 			= "UIKit"
 end
