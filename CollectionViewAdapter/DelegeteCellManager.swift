@@ -53,22 +53,6 @@ public class DelegateCellManager : NSObject{
         return data.count
     }
     
-    public func cellForIndex(indexPath : NSIndexPath) -> UICollectionViewCell{
-        let cellData = data[indexPath.row]
-        
-        guard let cellBinder = cellBinders[cellData.type] else {
-            return UICollectionViewCell()
-        }
-        
-        guard let cell = collectionView?.dequeueReusableCellWithReuseIdentifier(cellBinder.cellId, forIndexPath: indexPath) else {
-            return UICollectionViewCell()
-        }
-        
-        cellBinder.bindData(cell, cellData: cellData.data)
-        return cell
-
-    }
-    
     func getAllForIndex(index : Int) -> (CellDataHolder, CellViewBinder)? {
         let cellData = data[index]
         

@@ -24,9 +24,7 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellBinder.cellId, forIndexPath: indexPath)
         (cell as? CellViewBinder)?.bindData(cell, cellData: cellData.data)
-//        cellBinder.bindData(cell, cellData: cellData.data)
-        
-        
+ 
         return cell
     }
     
@@ -62,8 +60,8 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
     
     
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
-        guard let cellBinder = getAllForIndex(indexPath.row)?.1 as? CellViewBinderDelegates,
-            size = cellBinder.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAtIndexPath: indexPath) else {
+        guard let cellBinder = getAllForIndex(indexPath.row)?.1,
+            size = cellBinder.collectionView?(collectionView, layout: collectionViewLayout, sizeForItemAtIndexPath: indexPath) else {
                 
                 if let size = ownViewDelegateFlowLayout?.collectionView?(collectionView, layout: collectionViewLayout, sizeForItemAtIndexPath: indexPath){
                     return size
@@ -111,8 +109,8 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
     
     
     public func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool{
-        guard let cellBinder = getAllForIndex(indexPath.row)?.1 as? CellViewBinderDelegates,
-            shouldHighlightItemAtIndexPath = cellBinder.collectionView(collectionView, shouldHighlightItemAtIndexPath: indexPath) else {
+        guard let cellBinder = getAllForIndex(indexPath.row)?.1,
+            shouldHighlightItemAtIndexPath = cellBinder.collectionView?(collectionView, shouldHighlightItemAtIndexPath: indexPath) else {
                 
                 if let shouldHighlightItemAtIndexPath = ownViewDelegateFlowLayout?.collectionView?(collectionView, shouldHighlightItemAtIndexPath: indexPath){
                     return shouldHighlightItemAtIndexPath
@@ -125,22 +123,22 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
     public func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath){
         ownViewDelegateFlowLayout?.collectionView?(collectionView, didHighlightItemAtIndexPath: indexPath)
         
-        if let cellBinder = getAllForIndex(indexPath.row)?.1 as? CellViewBinderDelegates {
-            cellBinder.collectionView(collectionView, didHighlightItemAtIndexPath: indexPath)
+        if let cellBinder = getAllForIndex(indexPath.row)?.1 {
+            cellBinder.collectionView?(collectionView, didHighlightItemAtIndexPath: indexPath)
         }
     }
     
     public func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath){
         ownViewDelegateFlowLayout?.collectionView?(collectionView, didUnhighlightItemAtIndexPath: indexPath)
         
-        if let cellBinder = getAllForIndex(indexPath.row)?.1 as? CellViewBinderDelegates {
-            cellBinder.collectionView(collectionView, didUnhighlightItemAtIndexPath: indexPath)
+        if let cellBinder = getAllForIndex(indexPath.row)?.1 {
+            cellBinder.collectionView?(collectionView, didUnhighlightItemAtIndexPath: indexPath)
         }
     }
     
     public func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool{
-        guard let cellBinder = getAllForIndex(indexPath.row)?.1 as? CellViewBinderDelegates,
-            shouldSelectItemAtIndexPath = cellBinder.collectionView(collectionView, shouldSelectItemAtIndexPath: indexPath) else {
+        guard let cellBinder = getAllForIndex(indexPath.row)?.1,
+            shouldSelectItemAtIndexPath = cellBinder.collectionView?(collectionView, shouldSelectItemAtIndexPath: indexPath) else {
                 
                 if let shouldSelectItemAtIndexPath = ownViewDelegateFlowLayout?.collectionView?(collectionView, shouldSelectItemAtIndexPath: indexPath){
                     return shouldSelectItemAtIndexPath
@@ -151,8 +149,8 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     public func collectionView(collectionView: UICollectionView, shouldDeselectItemAtIndexPath indexPath: NSIndexPath) -> Bool{
-        guard let cellBinder = getAllForIndex(indexPath.row)?.1 as? CellViewBinderDelegates,
-            shouldDeselectItemAtIndexPath = cellBinder.collectionView(collectionView, shouldSelectItemAtIndexPath: indexPath) else {
+        guard let cellBinder = getAllForIndex(indexPath.row)?.1,
+            shouldDeselectItemAtIndexPath = cellBinder.collectionView?(collectionView, shouldSelectItemAtIndexPath: indexPath) else {
                 
                 if let shouldDeselectItemAtIndexPath = ownViewDelegateFlowLayout?.collectionView?(collectionView, shouldSelectItemAtIndexPath: indexPath){
                     return shouldDeselectItemAtIndexPath
@@ -166,16 +164,16 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
         ownViewDelegateFlowLayout?.collectionView?(collectionView, didSelectItemAtIndexPath: indexPath)
         
-        if let cellBinder = getAllForIndex(indexPath.row)?.1 as? CellViewBinderDelegates {
-            cellBinder.collectionView(collectionView, didSelectItemAtIndexPath: indexPath)
+        if let cellBinder = getAllForIndex(indexPath.row)?.1 {
+            cellBinder.collectionView?(collectionView, didSelectItemAtIndexPath: indexPath)
         }
     }
     
     public func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath){
         ownViewDelegateFlowLayout?.collectionView?(collectionView, didDeselectItemAtIndexPath: indexPath)
         
-        if let cellBinder = getAllForIndex(indexPath.row)?.1 as? CellViewBinderDelegates {
-            cellBinder.collectionView(collectionView, didDeselectItemAtIndexPath: indexPath)
+        if let cellBinder = getAllForIndex(indexPath.row)?.1 {
+            cellBinder.collectionView?(collectionView, didDeselectItemAtIndexPath: indexPath)
         }
     }
     
@@ -183,32 +181,32 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
     public func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath){
         ownViewDelegateFlowLayout?.collectionView?(collectionView, willDisplayCell: cell, forItemAtIndexPath: indexPath)
         
-        if let cellBinder = getAllForIndex(indexPath.row)?.1 as? CellViewBinderDelegates {
-            cellBinder.collectionView(collectionView, willDisplayCell: cell, forItemAtIndexPath: indexPath)
+        if let cellBinder = getAllForIndex(indexPath.row)?.1 {
+            cellBinder.collectionView?(collectionView, willDisplayCell: cell, forItemAtIndexPath: indexPath)
         }
     }
 
     public func collectionView(collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, atIndexPath indexPath: NSIndexPath){
         ownViewDelegateFlowLayout?.collectionView?(collectionView, willDisplaySupplementaryView: view, forElementKind: elementKind, atIndexPath: indexPath)
         
-        if let cellBinder = getAllForIndex(indexPath.row)?.1 as? CellViewBinderDelegates {
-            cellBinder.collectionView(collectionView, willDisplaySupplementaryView: view, forElementKind: elementKind, atIndexPath: indexPath)
+        if let cellBinder = getAllForIndex(indexPath.row)?.1 {
+            cellBinder.collectionView?(collectionView, willDisplaySupplementaryView: view, forElementKind: elementKind, atIndexPath: indexPath)
         }
     }
     
     public func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath){
         ownViewDelegateFlowLayout?.collectionView?(collectionView, didEndDisplayingCell: cell, forItemAtIndexPath: indexPath)
         
-        if let cellBinder = getAllForIndex(indexPath.row)?.1 as? CellViewBinderDelegates {
-            cellBinder.collectionView(collectionView, didEndDisplayingCell: cell, forItemAtIndexPath: indexPath)
+        if let cellBinder = getAllForIndex(indexPath.row)?.1 {
+            cellBinder.collectionView?(collectionView, didEndDisplayingCell: cell, forItemAtIndexPath: indexPath)
         }
     }
     
     public func collectionView(collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, atIndexPath indexPath: NSIndexPath){
         ownViewDelegateFlowLayout?.collectionView?(collectionView, didEndDisplayingSupplementaryView: view, forElementOfKind: elementKind, atIndexPath: indexPath)
         
-        if let cellBinder = getAllForIndex(indexPath.row)?.1 as? CellViewBinderDelegates {
-            cellBinder.collectionView(collectionView, didEndDisplayingSupplementaryView: view, forElementOfKind: elementKind, atIndexPath: indexPath)
+        if let cellBinder = getAllForIndex(indexPath.row)?.1 {
+            cellBinder.collectionView?(collectionView, didEndDisplayingSupplementaryView: view, forElementOfKind: elementKind, atIndexPath: indexPath)
         }
     }
     
@@ -216,8 +214,8 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
     // All three should be implemented if any are.
     
     public func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool{
-        guard let cellBinder = getAllForIndex(indexPath.row)?.1 as? CellViewBinderDelegates,
-            shouldShowMenuForItemAtIndexPath = cellBinder.collectionView(collectionView, shouldShowMenuForItemAtIndexPath: indexPath) else {
+        guard let cellBinder = getAllForIndex(indexPath.row)?.1,
+            shouldShowMenuForItemAtIndexPath = cellBinder.collectionView?(collectionView, shouldShowMenuForItemAtIndexPath: indexPath) else {
                 
                 if let shouldShowMenuForItemAtIndexPath = ownViewDelegateFlowLayout?.collectionView?(collectionView, shouldShowMenuForItemAtIndexPath: indexPath){
                     return shouldShowMenuForItemAtIndexPath
@@ -229,8 +227,8 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     public func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool{
-        guard let cellBinder = getAllForIndex(indexPath.row)?.1 as? CellViewBinderDelegates,
-            canPerformAction = cellBinder.collectionView(collectionView, canPerformAction:action, forItemAtIndexPath: indexPath, withSender: sender) else {
+        guard let cellBinder = getAllForIndex(indexPath.row)?.1,
+            canPerformAction = cellBinder.collectionView?(collectionView, canPerformAction:action, forItemAtIndexPath: indexPath, withSender: sender) else {
                 
                 if let canPerformAction = ownViewDelegateFlowLayout?.collectionView?(collectionView, canPerformAction:action, forItemAtIndexPath: indexPath, withSender: sender){
                     return canPerformAction
@@ -244,16 +242,16 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
     public func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?){
         ownViewDelegateFlowLayout?.collectionView?(collectionView, performAction: action, forItemAtIndexPath: indexPath, withSender: sender)
         
-        if let cellBinder = getAllForIndex(indexPath.row)?.1 as? CellViewBinderDelegates {
-            cellBinder.collectionView(collectionView, performAction: action, forItemAtIndexPath: indexPath, withSender: sender)
+        if let cellBinder = getAllForIndex(indexPath.row)?.1 {
+            cellBinder.collectionView?(collectionView, performAction: action, forItemAtIndexPath: indexPath, withSender: sender)
         }
     }
     
     // Focus
     @available(iOS 9.0, *)
     public func collectionView(collectionView: UICollectionView, canFocusItemAtIndexPath indexPath: NSIndexPath) -> Bool{
-        guard let cellBinder = getAllForIndex(indexPath.row)?.1 as? CellViewBinderDelegates,
-            canFocusItemAtIndexPath = cellBinder.collectionView(collectionView, canFocusItemAtIndexPath: indexPath) else {
+        guard let cellBinder = getAllForIndex(indexPath.row)?.1,
+            canFocusItemAtIndexPath = cellBinder.collectionView?(collectionView, canFocusItemAtIndexPath: indexPath) else {
                 
                 if let canFocusItemAtIndexPath = ownViewDelegateFlowLayout?.collectionView?(collectionView, canFocusItemAtIndexPath: indexPath){
                     return canFocusItemAtIndexPath
