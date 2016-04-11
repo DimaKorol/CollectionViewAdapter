@@ -9,7 +9,7 @@
 import UIKit
 
 public class DelegateCollectionView: UICollectionView {
-    var manager : DelegateCellManager?
+    public var manager : DelegateCellManager?
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

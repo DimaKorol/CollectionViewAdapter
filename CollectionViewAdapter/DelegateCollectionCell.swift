@@ -8,20 +8,20 @@
 
 import UIKit
 
-class DelegateCollectionCell: UICollectionViewCell, CellViewBinder {
-    var cellId: String {
+public class DelegateCollectionCell: UICollectionViewCell, CellViewBinder {
+    public var cellId: String {
         fatalError("Override property cellId in subclass of DelegateCollectionCell")
     }
     
-    var cellClass: AnyClass {
+    public var cellClass: AnyClass {
         return self.dynamicType
     }
     
-    func bindData(cell: UICollectionViewCell, cellData: AnyObject) {
+    public func bindData(cell: UICollectionViewCell, cellData: AnyObject) {
         bindData(cellData)
     }
     
-    func bindData(cellData: AnyObject) {
+    public func bindData(cellData: AnyObject) {
         fatalError("Override func bindData in subclass of DelegateCollectionCell")
     }
 }

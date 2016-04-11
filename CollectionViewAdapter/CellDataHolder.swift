@@ -17,7 +17,7 @@ public class CellDataHolder {
 }
 
 
-extension SequenceType{
+public extension SequenceType{
     func toCellDataHolder(type : Int) -> [CellDataHolder] {
         var data = [CellDataHolder]()
         for item in self{

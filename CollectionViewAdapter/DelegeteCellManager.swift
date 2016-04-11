@@ -22,7 +22,7 @@ public class DelegateCellManager : NSObject{
     public var ownViewDelegateFlowLayout : DKCollectionViewDelegateFlowLayout?
     
     
-    init(collectionView : UICollectionView, ownDataSourceDelegate : DKCollectionViewDataSource? = nil, ownViewDelegateFlowLayout : DKCollectionViewDelegateFlowLayout? = nil){
+    public init(collectionView : UICollectionView, ownDataSourceDelegate : DKCollectionViewDataSource? = nil, ownViewDelegateFlowLayout : DKCollectionViewDelegateFlowLayout? = nil){
         self.collectionView = collectionView
         super.init()
         self.collectionView?.delegate = self
