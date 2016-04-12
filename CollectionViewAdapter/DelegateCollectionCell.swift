@@ -17,11 +17,11 @@ public class DelegateCollectionCell: UICollectionViewCell, CellViewBinder {
         return self.dynamicType
     }
     
-    public func bindData(cell: UICollectionViewCell, cellData: AnyObject) {
+    public func bindData(cell: UICollectionViewCell, cellData: Any) {
         bindData(cellData)
     }
     
-    public func bindData(cellData: AnyObject) {
+    public func bindData(cellData: Any) {
         fatalError("Override func bindData in subclass of DelegateCollectionCell")
     }
 }

@@ -8,9 +8,9 @@
 
 public class CellDataHolder {
     public var type : Int
-    public var data : AnyObject
+    public var data : Any
     
-    public init(type : Int, data : AnyObject){
+    public init(type : Int, data : Any){
         self.type = type
         self.data = data
     }
@@ -21,7 +21,7 @@ public extension SequenceType{
     func toCellDataHolder(type : Int) -> [CellDataHolder] {
         var data = [CellDataHolder]()
         for item in self{
-            data.append(CellDataHolder(type: type, data: item as! AnyObject))
+            data.append(CellDataHolder(type: type, data: item))
         }
         return data
     }
