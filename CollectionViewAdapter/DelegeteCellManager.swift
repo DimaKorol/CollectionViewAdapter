@@ -39,7 +39,7 @@ public class DelegateCellManager : NSObject{
     public func addBinder(type : Int, cellViewBinder : CellViewBinder, shouldRegisterClass : Bool) {
         cellBinders[type] = cellViewBinder
         if shouldRegisterClass {
-            collectionView?.registerClass(cellViewBinder.cellClass, forCellWithReuseIdentifier: cellViewBinder.cellId)
+            collectionView?.registerNib(UINib(nibName: String(cellViewBinder.cellClass), bundle: nil), forCellWithReuseIdentifier: cellViewBinder.cellId)
         }
     }
     
