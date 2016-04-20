@@ -18,8 +18,8 @@ public class DelegateCellManager : NSObject{
     }
     private var cellBinders = [Int : CellViewBinder]()
     
-    public var ownDataSourceDelegate : DKCollectionViewDataSource?
-    public var ownViewDelegateFlowLayout : DKCollectionViewDelegateFlowLayout?
+    weak public var ownDataSourceDelegate : DKCollectionViewDataSource?
+    weak public var ownViewDelegateFlowLayout : DKCollectionViewDelegateFlowLayout?
     
     
     public init(collectionView : UICollectionView, ownDataSourceDelegate : DKCollectionViewDataSource? = nil, ownViewDelegateFlowLayout : DKCollectionViewDelegateFlowLayout? = nil){
