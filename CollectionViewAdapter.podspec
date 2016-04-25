@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                      = 'CollectionViewAdapter'
-  s.version                   = '0.4.0'
+  s.version                   = '0.5.0'
   s.summary                   = 'A Swift based collection view binder for iOS 8 and up. Look like AdapterDelegates for RecyclerView on Android'
   s.platform                  = :ios, '8.0'
   s.homepage                  = 'https://github.com/DimaKorol/CollectionViewAdapter'
