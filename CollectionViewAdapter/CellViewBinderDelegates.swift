@@ -9,6 +9,13 @@
 import UIKit
 
 @objc public protocol CellViewBinderDelegates {
+    
+    optional var cellAutoSize: Bool {get}
+    optional var cellSize: ContentSize {get}
+    optional var cellMarginVertical: CGFloat {get}
+    optional var cellMarginHorizontal: CGFloat {get}
+    optional func cellSize(collectionView: UICollectionView, estimatedSize: CGSize) -> CGSize
+    
     optional func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     
     optional func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets

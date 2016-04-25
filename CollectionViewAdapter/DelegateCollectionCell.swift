@@ -1,6 +1,6 @@
 //
 //  DelegateCollectionCell.swift
-//  test
+//  CollectionViewAdapter
 //
 //  Created by Dima Korolev on 10/04/16.
 //  Copyright © 2016 Dima Korolev. All rights reserved.

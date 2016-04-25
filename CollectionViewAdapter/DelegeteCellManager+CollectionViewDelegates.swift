@@ -23,12 +23,8 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
         }
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellBinder.cellId, forIndexPath: indexPath)
-        if let delegateCell = cell as? DelegateCollectionCell {
-            delegateCell.bindData(cell, cellData: cellData.data)
-        } else{
-            cellBinder.bindData(cell, cellData: cellData.data)
-        }
- 
+        bindData(cell, cellBinder: cellBinder, data: cellData.data)
+        
         return cell
     }
     
@@ -64,16 +60,37 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
     
     
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
-        guard let cellBinder = getAllForIndex(indexPath.row)?.1,
-            size = cellBinder.collectionView?(collectionView, layout: collectionViewLayout, sizeForItemAtIndexPath: indexPath) else {
-                
-                if let size = ownViewDelegateFlowLayout?.collectionView?(collectionView, layout: collectionViewLayout, sizeForItemAtIndexPath: indexPath){
-                    return size
-                }
-                return (collectionViewLayout as! UICollectionViewFlowLayout).itemSize
+        guard let (cellData, cellBinder) = getAllForIndex(indexPath.row) else {
+                return defaultSize(collectionView, layout: collectionViewLayout, defaultSizeForItemAtIndexPath: indexPath)
         }
         
-        return size
+        var size : CGSize?
+        
+        if let autolayout = cellBinder.cellAutoSize where autolayout{
+            let cell = templateCell(cellBinder)
+            bindData(cell, cellBinder: cellBinder, data: cellData.data)
+            size = cell.estimateSizeWith(cellBinder, collectionViewSize: collectionView.frame.size)
+            if let correctedSize = cellBinder.cellSize?(collectionView, estimatedSize: size!){
+                size = correctedSize
+            }
+        } else{
+            if let newSize = cellBinder.collectionView?(collectionView, layout: collectionViewLayout, sizeForItemAtIndexPath: indexPath){
+                size = newSize
+            }
+        }
+
+        guard let resultSize = size else{
+            return defaultSize(collectionView, layout: collectionViewLayout, defaultSizeForItemAtIndexPath: indexPath)
+        }
+        
+        return resultSize
+    }
+    
+    func defaultSize(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, defaultSizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
+        if let size = ownViewDelegateFlowLayout?.collectionView?(collectionView, layout: collectionViewLayout, sizeForItemAtIndexPath: indexPath){
+            return size
+        }
+        return (collectionViewLayout as! UICollectionViewFlowLayout).itemSize
     }
     
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
