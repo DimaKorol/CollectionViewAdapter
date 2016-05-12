@@ -60,6 +60,10 @@ public class DelegateCellManager : NSObject{
     }
     
     func getAllForIndex(index : Int) -> (CellDataHolder, CellViewBinder)? {
+        if index >= data.count{
+            return nil
+        }
+
         let cellData = data[index]
         
         guard let cellBinder = cellBinders[cellData.type] else {
