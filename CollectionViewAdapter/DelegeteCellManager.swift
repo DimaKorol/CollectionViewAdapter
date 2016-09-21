@@ -39,12 +39,21 @@ public class DelegateCellManager : NSObject{
         self.data = data
     }
     
-    public func addBinder(type : Int, cellViewBinder : CellViewBinder, shouldRegisterClass : Bool) {
+    public func addBinder(type : Int, cellViewBinder : CellViewBinder, shouldRegisterCellId : Bool) {
         cellBinders[type] = cellViewBinder
-        let nib = UINib(nibName: String(cellViewBinder.cellClass), bundle: nil)
-        templateCellNibs[cellViewBinder.cellId] = nib
-        if shouldRegisterClass {
-            collectionView?.registerNib(nib, forCellWithReuseIdentifier: cellViewBinder.cellId)
+        if NSBundle.mainBundle().pathForResource(String(cellViewBinder.cellClass), ofType: "nib") != nil {
+            let nib = UINib(nibName: String(cellViewBinder.cellClass), bundle: nil)
+            templateCellNibs[cellViewBinder.cellId] = nib
+            if shouldRegisterCellId {
+                collectionView?.registerNib(nib, forCellWithReuseIdentifier: cellViewBinder.cellId)
+            }
+
+        } else {
+            templateCells[cellViewBinder.cellId] = (cellViewBinder.cellClass as! UICollectionViewCell.Type).init()
+            if shouldRegisterCellId {
+                collectionView?.registerClass(cellViewBinder.cellClass, forCellWithReuseIdentifier: cellViewBinder.cellId)
+            }
+
         }
     }
     

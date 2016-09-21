@@ -15,6 +15,8 @@ public extension UICollectionViewCell{
         var height: CGFloat
         var width: CGFloat
         if contentSize.valueHeight == contentSize.valueWidth && (contentSize.valueHeight == .WrapContent || contentSize.valueHeight == .MatchContent){
+//            self.setNeedsLayout()
+//            self.layoutIfNeeded()
             let size = self.contentView.systemLayoutSizeFittingSize(contentSize.valueHeight == .WrapContent ? UILayoutFittingCompressedSize : UILayoutFittingExpandedSize)
             height = size.height
             width = size.width

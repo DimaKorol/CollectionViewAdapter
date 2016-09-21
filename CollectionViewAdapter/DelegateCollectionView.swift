@@ -21,7 +21,7 @@ public class DelegateCollectionView: UICollectionView {
     }
     
     public func addBinder(type : Int, cellViewBinder : CellViewBinder, shouldRegisterClass : Bool) {
-        manager?.addBinder(type, cellViewBinder: cellViewBinder, shouldRegisterClass: shouldRegisterClass)
+        manager?.addBinder(type, cellViewBinder: cellViewBinder, shouldRegisterCellId: shouldRegisterClass)
     }
     
     public func removeBinder(type : Int) {
