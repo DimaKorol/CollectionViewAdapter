@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -40,9 +44,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="1" green="0.38191586059999999" blue="0.22053693990000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.38191586059999999" blue="0.22053693990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="ZfD-oN-V77" firstAttribute="centerY" secondItem="MTx-kW-cxg" secondAttribute="centerY" id="2i7-oT-SEs"/>
                                             <constraint firstItem="ZfD-oN-V77" firstAttribute="centerX" secondItem="MTx-kW-cxg" secondAttribute="centerX" id="Ddz-M6-Ay7"/>
@@ -66,7 +69,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="KR1-TE-6qL" secondAttribute="bottom" constant="16" id="I0U-5b-nxd"/>
                                                         <constraint firstItem="KR1-TE-6qL" firstAttribute="leading" secondItem="ZYX-h5-dd6" secondAttribute="leading" id="iWu-Kn-EAA"/>
@@ -75,9 +78,8 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="ZYX-h5-dd6" firstAttribute="width" secondItem="kT2-J1-UV3" secondAttribute="width" id="52u-KL-xcl"/>
                                             <constraint firstItem="ZYX-h5-dd6" firstAttribute="height" secondItem="kT2-J1-UV3" secondAttribute="height" id="97E-2t-EaM"/>
@@ -102,9 +104,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="0.21425532959999999" green="0.36464153560000001" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.21425532959999999" green="0.36464153560000001" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="Pbd-QX-GaG" firstAttribute="centerX" secondItem="Yx7-OI-ame" secondAttribute="centerX" id="Rn6-Z2-bQ9"/>
                                             <constraint firstItem="Pbd-QX-GaG" firstAttribute="centerY" secondItem="Yx7-OI-ame" secondAttribute="centerY" id="qkk-Vz-Cru"/>
@@ -114,7 +115,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="P4s-nY-NXP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BAj-0N-KJX"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="P4s-nY-NXP" secondAttribute="bottom" id="BY6-zs-Hih"/>
@@ -122,7 +123,6 @@
                             <constraint firstItem="P4s-nY-NXP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="p1h-hh-J9y"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="collectionView" destination="P4s-nY-NXP" id="9z2-1l-y1f"/>
                     </connections>

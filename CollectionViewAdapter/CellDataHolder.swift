@@ -6,9 +6,9 @@
 //  Copyright © 2016 dimakorol. All rights reserved.
 //
 
-public class CellDataHolder {
-    public var type : Int
-    public var data : Any
+open class CellDataHolder {
+    open var type : Int
+    open var data : Any
     
     public init(type : Int, data : Any){
         self.type = type
@@ -17,8 +17,8 @@ public class CellDataHolder {
 }
 
 
-public extension SequenceType{
-    func toCellDataHolder(type : Int) -> [CellDataHolder] {
+public extension Sequence{
+    func toCellDataHolder(_ type : Int) -> [CellDataHolder] {
         var data = [CellDataHolder]()
         for item in self{
             data.append(CellDataHolder(type: type, data: item))

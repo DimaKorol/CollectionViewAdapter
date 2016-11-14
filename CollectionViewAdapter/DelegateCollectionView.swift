@@ -8,23 +8,23 @@
 
 import UIKit
 
-public class DelegateCollectionView: UICollectionView {
-    public var manager : DelegateCellManager?
+open class DelegateCollectionView: UICollectionView {
+    open var manager : DelegateCellManager?
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         manager = DelegateCellManager(collectionView: self)
     }
     
-    public func setData(data : [CellDataHolder]){
+    open func setData(_ data : [CellDataHolder]){
         manager?.setData(data)
     }
     
-    public func addBinder(type : Int, cellViewBinder : CellViewBinder, shouldRegisterClass : Bool) {
+    open func addBinder(_ type : Int, cellViewBinder : CellViewBinder, shouldRegisterClass : Bool) {
         manager?.addBinder(type, cellViewBinder: cellViewBinder, shouldRegisterCellId: shouldRegisterClass)
     }
     
-    public func removeBinder(type : Int) {
+    open func removeBinder(_ type : Int) {
         manager?.removeBinder(type)
     }
 }

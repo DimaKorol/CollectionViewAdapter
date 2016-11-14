@@ -8,21 +8,21 @@
 
 import UIKit
 
-public class DelegateCellManager : NSObject{
-    weak private var collectionView: UICollectionView?
+open class DelegateCellManager : NSObject{
+    weak fileprivate var collectionView: UICollectionView?
     
     var templateCells = [String : UICollectionViewCell]()
     var templateCellNibs = [String : UINib]()
     
-    private var data  = [CellDataHolder](){
+    fileprivate var data  = [CellDataHolder](){
         didSet{
             collectionView?.reloadData()
         }
     }
-    private var cellBinders = [Int : CellViewBinder]()
+    fileprivate var cellBinders = [Int : CellViewBinder]()
     
-    weak public var ownDataSourceDelegate : DKCollectionViewDataSource?
-    weak public var ownViewDelegateFlowLayout : DKCollectionViewDelegateFlowLayout?
+    weak open var ownDataSourceDelegate : DKCollectionViewDataSource?
+    weak open var ownViewDelegateFlowLayout : DKCollectionViewDelegateFlowLayout?
     
     
     public init(collectionView : UICollectionView, ownDataSourceDelegate : DKCollectionViewDataSource? = nil, ownViewDelegateFlowLayout : DKCollectionViewDelegateFlowLayout? = nil){
@@ -35,40 +35,40 @@ public class DelegateCellManager : NSObject{
         self.ownViewDelegateFlowLayout = ownViewDelegateFlowLayout
     }
     
-    public func setData(data : [CellDataHolder]){
+    open func setData(_ data : [CellDataHolder]){
         self.data = data
     }
     
-    public func addBinder(type : Int, cellViewBinder : CellViewBinder, shouldRegisterCellId : Bool) {
+    open func addBinder(_ type : Int, cellViewBinder : CellViewBinder, shouldRegisterCellId : Bool) {
         cellBinders[type] = cellViewBinder
-        if NSBundle.mainBundle().pathForResource(String(cellViewBinder.cellClass), ofType: "nib") != nil {
-            let nib = UINib(nibName: String(cellViewBinder.cellClass), bundle: nil)
+        if Bundle.main.path(forResource: String(describing: cellViewBinder.cellClass), ofType: "nib") != nil {
+            let nib = UINib(nibName: String(describing: cellViewBinder.cellClass), bundle: nil)
             templateCellNibs[cellViewBinder.cellId] = nib
             if shouldRegisterCellId {
-                collectionView?.registerNib(nib, forCellWithReuseIdentifier: cellViewBinder.cellId)
+                collectionView?.register(nib, forCellWithReuseIdentifier: cellViewBinder.cellId)
             }
 
         } else {
             templateCells[cellViewBinder.cellId] = (cellViewBinder.cellClass as! UICollectionViewCell.Type).init()
             if shouldRegisterCellId {
-                collectionView?.registerClass(cellViewBinder.cellClass, forCellWithReuseIdentifier: cellViewBinder.cellId)
+                collectionView?.register(cellViewBinder.cellClass, forCellWithReuseIdentifier: cellViewBinder.cellId)
             }
 
         }
     }
     
-    public func removeBinder(type : Int) {
-        if let cellViewBinder = cellBinders.removeValueForKey(type) {
+    open func removeBinder(_ type : Int) {
+        if let cellViewBinder = cellBinders.removeValue(forKey: type) {
             templateCellNibs[cellViewBinder.cellId] = nil
-            collectionView?.registerNib(nil, forCellWithReuseIdentifier: cellViewBinder.cellId)
+            collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellViewBinder.cellId)
         }
     }
     
-    public func getCount() -> Int{
+    open func getCount() -> Int{
         return data.count
     }
     
-    func getAllForIndex(index : Int) -> (CellDataHolder, CellViewBinder)? {
+    func getAllForIndex(_ index : Int) -> (CellDataHolder, CellViewBinder)? {
         if index >= data.count{
             return nil
         }
@@ -82,23 +82,23 @@ public class DelegateCellManager : NSObject{
         return (cellData, cellBinder)
     }
     
-    public func getCollectionView() -> UICollectionView?{
+    open func getCollectionView() -> UICollectionView?{
         return collectionView
     }
     
-    func bindData(cell: UICollectionViewCell, cellBinder: CellViewBinder, data: Any){
+    func bindData(_ cell: UICollectionViewCell, cellBinder: CellViewBinder, data: Any){
         if let delegateCell = cell as? DelegateCollectionCell {
-            delegateCell.bindData(cell, cellData: data)
+          delegateCell.bindData(cell, cellData: data)
         } else{
             cellBinder.bindData(cell, cellData: data)
         }
     }
 
-    func templateCell(cellBinder : CellViewBinder) -> UICollectionViewCell{
+    func templateCell(_ cellBinder : CellViewBinder) -> UICollectionViewCell{
         var cell: UICollectionViewCell? = templateCells[cellBinder.cellId]
         if cell == nil {
             if let cellNib = templateCellNibs[cellBinder.cellId] {
-                cell = cellNib.instantiateWithOwner(nil, options: nil)[0] as? UICollectionViewCell
+                cell = cellNib.instantiate(withOwner: nil, options: nil)[0] as? UICollectionViewCell
             } else {
                 assertionFailure("\(cellBinder.cellId) is not registered in \(self)")
             }

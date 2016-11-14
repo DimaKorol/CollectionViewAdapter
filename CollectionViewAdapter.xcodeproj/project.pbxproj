@@ -22,7 +22,33 @@
 		F8944D7E1CB7AE5700E0F3E9 /* DelegateCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8944D771CB7AE5700E0F3E9 /* DelegateCollectionView.swift */; };
 		F8944D7F1CB7AE5700E0F3E9 /* DelegeteCellManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8944D781CB7AE5700E0F3E9 /* DelegeteCellManager.swift */; };
 		F8944D801CB7AE5700E0F3E9 /* DelegeteCellManager+CollectionViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8944D791CB7AE5700E0F3E9 /* DelegeteCellManager+CollectionViewDelegates.swift */; };
+		F8B942C51DD9CFEF00B80A26 /* CollectionViewAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8944D681CB7AE3E00E0F3E9 /* CollectionViewAdapter.framework */; };
+		F8B942C61DD9CFEF00B80A26 /* CollectionViewAdapter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F8944D681CB7AE3E00E0F3E9 /* CollectionViewAdapter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F8B942C71DD9CFEF00B80A26 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8944D5F1CB7AE3E00E0F3E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F8944D671CB7AE3E00E0F3E9;
+			remoteInfo = CollectionViewAdapter;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F8B942C91DD9CFEF00B80A26 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F8B942C61DD9CFEF00B80A26 /* CollectionViewAdapter.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		292D558B1CBC468B0062BD1A /* DelegateCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegateCollectionCell.swift; sourceTree = "<group>"; };
@@ -51,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8B942C51DD9CFEF00B80A26 /* CollectionViewAdapter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,10 +161,12 @@
 				295591861D8ECD5400AFA364 /* Sources */,
 				295591871D8ECD5400AFA364 /* Frameworks */,
 				295591881D8ECD5400AFA364 /* Resources */,
+				F8B942C91DD9CFEF00B80A26 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F8B942C81DD9CFEF00B80A26 /* PBXTargetDependency */,
 			);
 			name = Test;
 			productName = Test;
@@ -169,14 +198,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = dimakorol;
 				TargetAttributes = {
 					295591891D8ECD5400AFA364 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 					};
 					F8944D671CB7AE3E00E0F3E9 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -247,6 +278,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F8B942C81DD9CFEF00B80A26 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F8944D671CB7AE3E00E0F3E9 /* CollectionViewAdapter */;
+			targetProxy = F8B942C71DD9CFEF00B80A26 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		295591901D8ECD5400AFA364 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -270,22 +309,26 @@
 		295591991D8ECD5400AFA364 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dimakorol.CollectionViewAdapter.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		2955919A1D8ECD5400AFA364 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dimakorol.CollectionViewAdapter.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -303,8 +346,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -352,8 +397,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -373,6 +420,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -396,6 +444,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -414,6 +463,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dimakorol.CollectionViewAdapter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -427,6 +477,7 @@
 				2955919A1D8ECD5400AFA364 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F8944D621CB7AE3E00E0F3E9 /* Build configuration list for PBXProject "CollectionViewAdapter" */ = {
 			isa = XCConfigurationList;

@@ -7,36 +7,36 @@
 //
 
 public extension UICollectionViewCell{
-    func estimateSizeWith(cellBinder : CellViewBinder, collectionViewSize: CGSize) -> CGSize?{
+    func estimateSizeWith(_ cellBinder : CellViewBinder, collectionViewSize: CGSize) -> CGSize?{
         guard let contentSize = cellBinder.cellSize else{
             return nil
         }
         
         var height: CGFloat
         var width: CGFloat
-        if contentSize.valueHeight == contentSize.valueWidth && (contentSize.valueHeight == .WrapContent || contentSize.valueHeight == .MatchContent){
+        if contentSize.valueHeight == contentSize.valueWidth && (contentSize.valueHeight == .wrapContent || contentSize.valueHeight == .matchContent){
 //            self.setNeedsLayout()
 //            self.layoutIfNeeded()
-            let size = self.contentView.systemLayoutSizeFittingSize(contentSize.valueHeight == .WrapContent ? UILayoutFittingCompressedSize : UILayoutFittingExpandedSize)
+            let size = self.contentView.systemLayoutSizeFitting(contentSize.valueHeight == .wrapContent ? UILayoutFittingCompressedSize : UILayoutFittingExpandedSize)
             height = size.height
             width = size.width
         } else{
             switch contentSize.valueWidth {
-            case .FixedValue(let a):
+            case .fixedValue(let a):
                 width = a
-            case .MatchContent:
+            case .matchContent:
                 width = collectionViewSize.width
             default:
-                width = self.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).width
+                width = self.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).width
             }
             
             switch contentSize.valueHeight {
-            case .FixedValue(let a):
+            case .fixedValue(let a):
                 height = a
-            case .MatchContent:
+            case .matchContent:
                 height = collectionViewSize.height
             default:
-                height = self.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
+                height = self.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
             }
         }
         
@@ -48,6 +48,6 @@ public extension UICollectionViewCell{
             height -= marginVertical
         }
         
-        return CGSizeMake(width, height)
+        return CGSize(width: width, height: height)
     }
 }

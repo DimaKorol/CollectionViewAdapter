@@ -8,39 +8,39 @@
 
 import Foundation
 
-@objc public class ContentSize: NSObject{
-    public let valueWidth: ContentParam
-    public let valueHeight: ContentParam
+@objc open class ContentSize: NSObject{
+    open let valueWidth: ContentParam
+    open let valueHeight: ContentParam
     
     public init(width : ContentParam, height : ContentParam){
         valueWidth = width
         valueHeight = height
     }
     
-    public static func FixedSize(width: CGFloat, height: CGFloat) -> ContentSize{
-        return ContentSize(width: .FixedValue(width), height: .FixedValue(height))
+    open static func FixedSize(_ width: CGFloat, height: CGFloat) -> ContentSize{
+        return ContentSize(width: .fixedValue(width), height: .fixedValue(height))
     }
     
-    public static func WrapContent() -> ContentSize{
-        return ContentSize(width: .WrapContent, height: .WrapContent)
+    open static func WrapContent() -> ContentSize{
+        return ContentSize(width: .wrapContent, height: .wrapContent)
     }
     
-    public static func MatchContent() -> ContentSize{
-        return ContentSize(width: .MatchContent, height: .MatchContent)
+    open static func MatchContent() -> ContentSize{
+        return ContentSize(width: .matchContent, height: .matchContent)
     }
 }
 
 public enum ContentParam {
-    case FixedValue(CGFloat)
-    case WrapContent
-    case MatchContent
+    case fixedValue(CGFloat)
+    case wrapContent
+    case matchContent
 }
 
 public func ==(a: ContentParam, b: ContentParam) -> Bool {
     switch (a, b) {
-    case (.FixedValue(let a),   .FixedValue(let b))  where a == b: return true
-    case (.WrapContent, .WrapContent): return true
-    case (.MatchContent, .MatchContent): return true
+    case (.fixedValue(let a),   .fixedValue(let b))  where a == b: return true
+    case (.wrapContent, .wrapContent): return true
+    case (.matchContent, .matchContent): return true
     default: return false
     }
 }
