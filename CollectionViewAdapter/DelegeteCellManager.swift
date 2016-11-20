@@ -89,7 +89,9 @@ open class DelegateCellManager : NSObject{
     func bindData(_ cell: UICollectionViewCell, cellBinder: CellViewBinder, data: Any){
         if let delegateCell = cell as? DelegateCollectionCell {
           delegateCell.bindData(cell, cellData: data)
-        } else{
+        } else if let delegateCell = cell as? CellViewBinder {
+            delegateCell.bindData(cell, cellData: data)
+        } else {
             cellBinder.bindData(cell, cellData: data)
         }
     }
