@@ -28,23 +28,25 @@ class ViewController: UIViewController {
     
     func getTestData() -> [CellDataHolder]{
         var data = [CellDataHolder]()
+      
+      data.append(CellDataHolder(type: 2, data: "Hello 0"))
         data.append(CellDataHolder(type: 1, data: UIColor.red))
         data.append(CellDataHolder(type: 3, data: ""))
         data.append(CellDataHolder(type: 3, data: ""))
         data.append(CellDataHolder(type: 0, data: ""))
         data.append(CellDataHolder(type: 0, data: ""))
         data.append(CellDataHolder(type: 0, data: ""))
-        data.append(CellDataHolder(type: 2, data: ""))
+        data.append(CellDataHolder(type: 2, data: "Hello 1"))
         data.append(CellDataHolder(type: 1, data: UIColor.yellow))
         data.append(CellDataHolder(type: 1, data: UIColor.blue))
-//        data.append(CellDataHolder(type: 2, data: ""))
+        data.append(CellDataHolder(type: 2, data: "Hello 2"))
         data.append(CellDataHolder(type: 0, data: ""))
         data.append(CellDataHolder(type: 0, data: ""))
         data.append(CellDataHolder(type: 0, data: ""))
         data.append(CellDataHolder(type: 1, data: UIColor.orange))
-        data.append(CellDataHolder(type: 2, data: ""))
-        data.append(CellDataHolder(type: 2, data: ""))
-        data.append(CellDataHolder(type: 1, data: UIColor.black))
+        data.append(CellDataHolder(type: 2, data: "Hello 3"))
+        data.append(CellDataHolder(type: 2, data: "Hello 4"))
+        data.append(CellDataHolder(type: 1, data: UIColor.purple))
         return data
     }
     
@@ -52,6 +54,7 @@ class ViewController: UIViewController {
 
 
 class SmallCellBinder : UICollectionViewCell, CellViewBinder{
+    @IBOutlet weak var label: UILabel!
     var cellId: String {
         return "smallCell"
     }
@@ -61,6 +64,7 @@ class SmallCellBinder : UICollectionViewCell, CellViewBinder{
     }
     
     func bindData(_ cell: UICollectionViewCell, cellData: Any) {
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
@@ -99,16 +103,20 @@ class TextCellBinder : UICollectionViewCell, CellViewBinder{
     
     var cellAutoSize: Bool = true
 //
-    var cellSize: ContentSize = ContentSize.WrapContent()
+    var cellSize: ContentSize = ContentSize.init(width: .matchContent, height: .wrapContent)
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     func bindData(_ cell: UICollectionViewCell, cellData: Any) {
-        (cell as? BigCellBinder)?.contentView.backgroundColor = cellData as? UIColor
+      guard let cell = cell as? TextCellBinder else {
+        return
+      }
+      
+        (cell.subviews.first?.subviews.first as? UILabel)?.text = cellData as? String
         
-        (self.contentView.subviews.first as? UILabel)?.preferredMaxLayoutWidth = 200
+        (cell.subviews.first?.subviews.first as? UILabel)?.preferredMaxLayoutWidth = 200
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
@@ -137,5 +145,3 @@ class ProgramCell : DelegateCollectionCell{
         return CGSize(width: width , height: width)
     }
 }
-
-
