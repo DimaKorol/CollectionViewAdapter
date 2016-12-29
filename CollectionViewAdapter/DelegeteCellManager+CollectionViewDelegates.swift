@@ -8,6 +8,13 @@
 
 import UIKit
 
+extension UIView
+{
+  func copyView<T: UIView>() -> T {
+    return NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: self)) as! T
+  }
+}
+
 extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return getCount()
@@ -24,6 +31,16 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellBinder.cellId, for: indexPath)
         bindData(cell, cellBinder: cellBinder, data: cellData.data)
+      if templateCell(cellBinder) == nil {
+//        let cellCopy: UICollectionViewCell = cell.copyView()
+        templateCells[cellBinder.cellId] = cell
+        DispatchQueue.global().async {
+          Thread.sleep(forTimeInterval: 0.01)
+          DispatchQueue.main.async {
+            collectionView.reloadData()
+          }
+        }
+      }
         
         return cell
     }
@@ -67,12 +84,13 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
         var size : CGSize?
         
         if let autolayout = cellBinder.cellAutoSize, autolayout {
-            let cell = templateCell(cellBinder)
+          if let cell = templateCell(cellBinder) {
             bindData(cell, cellBinder: cellBinder, data: cellData.data)
             size = cell.estimateSizeWith(cellBinder, collectionViewSize: collectionView.frame.size)
             if let correctedSize = cellBinder.cellSize?(collectionView, estimatedSize: size!){
                 size = correctedSize
             }
+          }
         } else {
             if let newSize = cellBinder.collectionView?(collectionView, layout: collectionViewLayout, sizeForItemAtIndexPath: indexPath){
                 size = newSize

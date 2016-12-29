@@ -49,7 +49,6 @@ open class DelegateCellManager : NSObject {
       }
       
     } else {
-      templateCells[cellViewBinder.cellId] = (cellViewBinder.cellClass as! UICollectionViewCell.Type).init()
       if shouldRegisterCellId {
         collectionView?.register(cellViewBinder.cellClass, forCellWithReuseIdentifier: cellViewBinder.cellId)
       }
@@ -96,17 +95,15 @@ open class DelegateCellManager : NSObject {
     }
   }
   
-  func templateCell(_ cellBinder: CellViewBinder) -> UICollectionViewCell {
+  func templateCell(_ cellBinder: CellViewBinder) -> UICollectionViewCell? {
     var cell: UICollectionViewCell? = templateCells[cellBinder.cellId]
     if cell == nil {
       if let cellNib = templateCellNibs[cellBinder.cellId] {
-        cell = cellNib.instantiate(withOwner: nil, options: nil)[0] as? UICollectionViewCell
-      } else {
-        assertionFailure("\(cellBinder.cellId) is not registered in \(self)")
+        cell = cellNib.instantiate(withOwner: cellBinder, options: nil)[0] as? UICollectionViewCell
       }
       templateCells[cellBinder.cellId] = cell
     }
-    return cell!
+    return cell
   }
 }
 
