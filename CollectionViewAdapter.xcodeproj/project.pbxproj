@@ -136,9 +136,9 @@
 				F8944D771CB7AE5700E0F3E9 /* DelegateCollectionView.swift */,
 				F8944D781CB7AE5700E0F3E9 /* DelegeteCellManager.swift */,
 				F8944D791CB7AE5700E0F3E9 /* DelegeteCellManager+CollectionViewDelegates.swift */,
+				29D2C44A1E1B0366004E9B0B /* UIView+Frame.swift */,
 				F8944D6B1CB7AE3E00E0F3E9 /* CollectionViewAdapter.h */,
 				F8944D6D1CB7AE3E00E0F3E9 /* Info.plist */,
-				29D2C44A1E1B0366004E9B0B /* UIView+Frame.swift */,
 			);
 			path = CollectionViewAdapter;
 			sourceTree = "<group>";
