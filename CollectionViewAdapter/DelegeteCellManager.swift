@@ -72,7 +72,7 @@ open class DelegateCellManager : NSObject {
     return data.count
   }
   
-  func getAllForIndex(_ index: Int) -> (CellDataHolder, CellViewBinder)? {
+  func cellConfig(forIndex index: Int) -> (data: CellDataHolder, binder: CellViewBinder)? {
     if index >= data.count{
       return nil
     }
