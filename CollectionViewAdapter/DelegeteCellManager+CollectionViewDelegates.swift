@@ -77,8 +77,14 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
     
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+      let frame = collectionView.frame
+      if numberRows > 1 {
+        collectionView.width = frame.width / CGFloat(numberRows) - self.collectionView(collectionView, layout: collectionViewLayout, minimumInteritemSpacingForSectionAt: indexPath.section)
+      }
         guard let (cellData, cellBinder) = getAllForIndex(indexPath.row) else {
-                return defaultSize(collectionView, layout: collectionViewLayout, defaultSizeForItemAtIndexPath: indexPath)
+          let size = defaultSize(collectionView, layout: collectionViewLayout, defaultSizeForItemAtIndexPath: indexPath)
+          collectionView.frame = frame
+          return size
         }
         
         var size : CGSize?
@@ -98,9 +104,12 @@ extension DelegateCellManager: UICollectionViewDataSource, UICollectionViewDeleg
         }
 
         guard let resultSize = size else {
-            return defaultSize(collectionView, layout: collectionViewLayout, defaultSizeForItemAtIndexPath: indexPath)
+          let size = defaultSize(collectionView, layout: collectionViewLayout, defaultSizeForItemAtIndexPath: indexPath)
+          collectionView.frame = frame
+          return size
         }
-        
+      
+        collectionView.frame = frame
         return resultSize
     }
     

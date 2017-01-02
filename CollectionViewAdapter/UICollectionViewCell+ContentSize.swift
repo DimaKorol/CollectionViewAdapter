@@ -27,8 +27,10 @@ public extension UICollectionViewCell {
       case .matchContent:
         width = collectionViewSize.width
       default:
-        width = self.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).width
+        width = contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).width
       }
+      
+      contentView.width = width
       
       switch contentSize.valueHeight {
       case .fixedValue(let a):
@@ -36,7 +38,7 @@ public extension UICollectionViewCell {
       case .matchContent:
         height = collectionViewSize.height
       default:
-        height = self.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        height = contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
       }
     }
     

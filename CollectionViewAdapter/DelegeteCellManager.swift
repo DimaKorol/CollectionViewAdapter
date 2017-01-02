@@ -24,6 +24,11 @@ open class DelegateCellManager : NSObject {
   weak open var ownDataSourceDelegate : DKCollectionViewDataSource?
   weak open var ownViewDelegateFlowLayout : DKCollectionViewDelegateFlowLayout?
   
+  public var numberRows: Int = 1 {
+    didSet{
+      collectionView?.reloadData()
+    }
+  }
   
   public init(collectionView: UICollectionView, ownDataSourceDelegate: DKCollectionViewDataSource? = nil, ownViewDelegateFlowLayout: DKCollectionViewDelegateFlowLayout? = nil) {
     self.collectionView = collectionView

@@ -11,6 +11,12 @@ import UIKit
 open class DelegateCollectionView: UICollectionView {
   open var manager: DelegateCellManager?
   
+  @IBInspectable open var rows: Int = 1 {
+    didSet {
+      manager?.numberRows = rows
+    }
+  }
+  
   required public init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     manager = DelegateCellManager(collectionView: self)
