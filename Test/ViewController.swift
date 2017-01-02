@@ -19,6 +19,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         manager = DelegateCellManager(collectionView: collectionView)
+      manager?.numberRows = 3
         manager?.addBinder(0, cellViewBinder: SmallCellBinder(), shouldRegisterCellId: false)
         manager?.addBinder(1, cellViewBinder: BigCellBinder(), shouldRegisterCellId: false)
         manager?.addBinder(2, cellViewBinder: TextCellBinder(), shouldRegisterCellId: false)
@@ -29,7 +30,7 @@ class ViewController: UIViewController {
     func getTestData() -> [CellDataHolder]{
         var data = [CellDataHolder]()
       
-      data.append(CellDataHolder(type: 2, data: "Hello 0"))
+      data.append(CellDataHolder(type: 2, data: "Hello 0\nHello 0\nHello 0"))
         data.append(CellDataHolder(type: 1, data: UIColor.red))
         data.append(CellDataHolder(type: 3, data: ""))
         data.append(CellDataHolder(type: 3, data: ""))
@@ -103,7 +104,7 @@ class TextCellBinder : UICollectionViewCell, CellViewBinder{
     
     var cellAutoSize: Bool = true
 //
-    var cellSize: ContentSize = ContentSize.init(width: .matchContent, height: .wrapContent)
+    var cellSize: ContentSize = ContentSize(width: .matchContent, height: .wrapContent)
     
     override func awakeFromNib() {
         super.awakeFromNib()

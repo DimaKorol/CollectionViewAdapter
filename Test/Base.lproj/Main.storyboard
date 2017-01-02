@@ -63,8 +63,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="160" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAJ-Ve-JOH">
-                                                    <rect key="frame" x="59" y="24" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAJ-Ve-JOH">
+                                                    <rect key="frame" x="28" y="24" width="104" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -75,8 +75,8 @@
                                         <constraints>
                                             <constraint firstAttribute="bottomMargin" secondItem="tAJ-Ve-JOH" secondAttribute="bottom" constant="16" id="2Lu-ic-CWz"/>
                                             <constraint firstItem="tAJ-Ve-JOH" firstAttribute="top" secondItem="L3h-oT-dzY" secondAttribute="topMargin" constant="16" id="G2T-DA-R7t"/>
-                                            <constraint firstItem="tAJ-Ve-JOH" firstAttribute="leading" secondItem="L3h-oT-dzY" secondAttribute="leadingMargin" constant="51" id="XAu-vO-T2Y"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="tAJ-Ve-JOH" secondAttribute="trailing" constant="51" id="elc-aF-ac8"/>
+                                            <constraint firstItem="tAJ-Ve-JOH" firstAttribute="leading" secondItem="L3h-oT-dzY" secondAttribute="leadingMargin" constant="20" id="XAu-vO-T2Y"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="tAJ-Ve-JOH" secondAttribute="trailing" constant="20" id="elc-aF-ac8"/>
                                         </constraints>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="textCell1" id="kT2-J1-UV3" customClass="TextCellBinder" customModule="Test" customModuleProvider="target">
