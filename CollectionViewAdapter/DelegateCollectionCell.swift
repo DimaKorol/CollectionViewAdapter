@@ -13,10 +13,6 @@ open class DelegateCollectionCell: UICollectionViewCell, CellViewBinder {
     fatalError("Override property cellId in subclass of DelegateCollectionCell")
   }
   
-  open var cellClass: AnyClass {
-    return type(of: self)
-  }
-  
   open func bindData(_ cell: UICollectionViewCell, cellData: Any) {
     bindData(cellData)
   }

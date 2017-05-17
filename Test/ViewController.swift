@@ -60,10 +60,6 @@ class SmallCellBinder : UICollectionViewCell, CellViewBinder{
         return "smallCell"
     }
     
-    var cellClass: AnyClass {
-        return type(of: self)
-    }
-    
     func bindData(_ cell: UICollectionViewCell, cellData: Any) {
         
     }
@@ -79,10 +75,6 @@ class BigCellBinder : UICollectionViewCell, CellViewBinder{
         return "bigCell"
     }
     
-    var cellClass: AnyClass {
-        return type(of: self)
-    }
-    
     func bindData(_ cell: UICollectionViewCell, cellData: Any) {
         (cell as? BigCellBinder)?.contentView.backgroundColor = cellData as? UIColor
     }
@@ -96,10 +88,6 @@ class BigCellBinder : UICollectionViewCell, CellViewBinder{
 class TextCellBinder : UICollectionViewCell, CellViewBinder{
     var cellId: String {
         return "textCell"
-    }
-    
-    var cellClass: AnyClass {
-        return type(of: self)
     }
     
     var cellAutoSize: Bool = true

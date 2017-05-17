@@ -9,7 +9,13 @@
 import UIKit
 
 public protocol CellViewBinder: CellViewBinderDelegates {
-  var cellId: String {get}
-  var cellClass: AnyClass {get}
+  var cellId: String { get }
+  var cellClass: AnyClass { get }
   func bindData(_ cell: UICollectionViewCell, cellData: Any)
+}
+
+public extension CellViewBinder {
+  var cellClass: AnyClass {
+    return type(of: self)
+  }
 }
