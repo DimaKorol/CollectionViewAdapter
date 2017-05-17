@@ -13,6 +13,7 @@
 		295591921D8ECD5400AFA364 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 295591901D8ECD5400AFA364 /* Main.storyboard */; };
 		295591941D8ECD5400AFA364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 295591931D8ECD5400AFA364 /* Assets.xcassets */; };
 		295591971D8ECD5400AFA364 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 295591951D8ECD5400AFA364 /* LaunchScreen.storyboard */; };
+		298BD9EF1ECCF8EE00185C08 /* DelegeteCellManager+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298BD9EE1ECCF8EE00185C08 /* DelegeteCellManager+UICollectionViewDelegateFlowLayout.swift */; };
 		29D2C44B1E1B0366004E9B0B /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D2C44A1E1B0366004E9B0B /* UIView+Frame.swift */; };
 		29DF9CF71D86103F00916D21 /* ContentSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF9CF61D86103F00916D21 /* ContentSize.swift */; };
 		29DF9CF91D86107F00916D21 /* UICollectionViewCell+ContentSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF9CF81D86107F00916D21 /* UICollectionViewCell+ContentSize.swift */; };
@@ -22,7 +23,7 @@
 		F8944D7C1CB7AE5700E0F3E9 /* CellViewBinderDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8944D751CB7AE5700E0F3E9 /* CellViewBinderDelegates.swift */; };
 		F8944D7E1CB7AE5700E0F3E9 /* DelegateCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8944D771CB7AE5700E0F3E9 /* DelegateCollectionView.swift */; };
 		F8944D7F1CB7AE5700E0F3E9 /* DelegeteCellManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8944D781CB7AE5700E0F3E9 /* DelegeteCellManager.swift */; };
-		F8944D801CB7AE5700E0F3E9 /* DelegeteCellManager+CollectionViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8944D791CB7AE5700E0F3E9 /* DelegeteCellManager+CollectionViewDelegates.swift */; };
+		F8944D801CB7AE5700E0F3E9 /* DelegeteCellManager+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8944D791CB7AE5700E0F3E9 /* DelegeteCellManager+UICollectionViewDataSource.swift */; };
 		F8B942C51DD9CFEF00B80A26 /* CollectionViewAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8944D681CB7AE3E00E0F3E9 /* CollectionViewAdapter.framework */; };
 		F8B942C61DD9CFEF00B80A26 /* CollectionViewAdapter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F8944D681CB7AE3E00E0F3E9 /* CollectionViewAdapter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		295591931D8ECD5400AFA364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		295591961D8ECD5400AFA364 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		295591981D8ECD5400AFA364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		298BD9EE1ECCF8EE00185C08 /* DelegeteCellManager+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DelegeteCellManager+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
 		29D2C44A1E1B0366004E9B0B /* UIView+Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Frame.swift"; sourceTree = "<group>"; };
 		29DF9CF61D86103F00916D21 /* ContentSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentSize.swift; sourceTree = "<group>"; };
 		29DF9CF81D86107F00916D21 /* UICollectionViewCell+ContentSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+ContentSize.swift"; sourceTree = "<group>"; };
@@ -71,7 +73,7 @@
 		F8944D751CB7AE5700E0F3E9 /* CellViewBinderDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewBinderDelegates.swift; sourceTree = "<group>"; };
 		F8944D771CB7AE5700E0F3E9 /* DelegateCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegateCollectionView.swift; sourceTree = "<group>"; };
 		F8944D781CB7AE5700E0F3E9 /* DelegeteCellManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegeteCellManager.swift; sourceTree = "<group>"; };
-		F8944D791CB7AE5700E0F3E9 /* DelegeteCellManager+CollectionViewDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DelegeteCellManager+CollectionViewDelegates.swift"; sourceTree = "<group>"; };
+		F8944D791CB7AE5700E0F3E9 /* DelegeteCellManager+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DelegeteCellManager+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,7 +137,8 @@
 				292D558B1CBC468B0062BD1A /* DelegateCollectionCell.swift */,
 				F8944D771CB7AE5700E0F3E9 /* DelegateCollectionView.swift */,
 				F8944D781CB7AE5700E0F3E9 /* DelegeteCellManager.swift */,
-				F8944D791CB7AE5700E0F3E9 /* DelegeteCellManager+CollectionViewDelegates.swift */,
+				F8944D791CB7AE5700E0F3E9 /* DelegeteCellManager+UICollectionViewDataSource.swift */,
+				298BD9EE1ECCF8EE00185C08 /* DelegeteCellManager+UICollectionViewDelegateFlowLayout.swift */,
 				29D2C44A1E1B0366004E9B0B /* UIView+Frame.swift */,
 				F8944D6B1CB7AE3E00E0F3E9 /* CollectionViewAdapter.h */,
 				F8944D6D1CB7AE3E00E0F3E9 /* Info.plist */,
@@ -268,7 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8944D7E1CB7AE5700E0F3E9 /* DelegateCollectionView.swift in Sources */,
-				F8944D801CB7AE5700E0F3E9 /* DelegeteCellManager+CollectionViewDelegates.swift in Sources */,
+				F8944D801CB7AE5700E0F3E9 /* DelegeteCellManager+UICollectionViewDataSource.swift in Sources */,
 				29DF9CF71D86103F00916D21 /* ContentSize.swift in Sources */,
 				29DF9CF91D86107F00916D21 /* UICollectionViewCell+ContentSize.swift in Sources */,
 				F8944D7C1CB7AE5700E0F3E9 /* CellViewBinderDelegates.swift in Sources */,
@@ -277,6 +280,7 @@
 				F8944D7B1CB7AE5700E0F3E9 /* CellViewBinder.swift in Sources */,
 				292D558C1CBC468B0062BD1A /* DelegateCollectionCell.swift in Sources */,
 				F8944D7A1CB7AE5700E0F3E9 /* CellDataHolder.swift in Sources */,
+				298BD9EF1ECCF8EE00185C08 /* DelegeteCellManager+UICollectionViewDelegateFlowLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
