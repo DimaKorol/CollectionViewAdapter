@@ -107,11 +107,6 @@ class TextCellBinder : UICollectionViewCell, CellViewBinder{
         
         (cell.subviews.first?.subviews.first as? UILabel)?.preferredMaxLayoutWidth = 200
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width
-        return CGSize(width: width , height: 100)
-    }
 }
 
 class ProgramCell : DelegateCollectionCell{
